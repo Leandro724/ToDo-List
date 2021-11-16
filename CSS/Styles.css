@@ -11,7 +11,7 @@ body{
     background-position-x:center;
     
 }
-header,form{
+header,form,.listContainer{
     font-size: 20px;
     display: flex;
     min-height: 7vh;
@@ -39,4 +39,39 @@ form button{
 form button:hover{
     background: rgb(238, 140, 48);
     color: antiquewhite;
+}
+
+.listContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#listItems{
+    min-width: 25%;
+    list-style: none;
+}
+.task{
+    margin: 0.5rem;
+    background:rgb(238, 140, 48)  ;
+    color: antiquewhite;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.task li{
+    flex: 1;
+}
+
+.completed-btn,.delete-btn{
+    background: rgb(247, 73, 42) ;
+    color: antiquewhite;
+    border-radius: 5px;
+    border-width: 0.5px;
+    padding:0.5rem;
+    cursor: pointer;
+    font: size 1rem;
+}
+.completed-btn{
+    background: rgb(14, 223, 14);
 }
