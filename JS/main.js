@@ -4,7 +4,8 @@ const inputButton = document.getElementById("inputButton");
 const listItems = document.getElementById("listItems");
 
 // Even Listeners
-inputButton.addEventListener('click',addTask)
+inputButton.addEventListener('click',addTask);
+listItems.addEventListener('click',completeDelete);
 
 // Functions
 
@@ -17,7 +18,7 @@ function addTask (event){
     // Create List item
     const newTask = document.createElement('li');
     newTask.classList.add('task-item');
-    newTask.innerText = 'hello';
+    newTask.innerText = userInput.value;
     taskDiv.appendChild(newTask);
     // Task Completed button
     const taskCompleted = document.createElement('button');
@@ -31,6 +32,27 @@ function addTask (event){
     taskDiv.appendChild(taskDelete);
     // Append to List Items
     listItems.appendChild(taskDiv);
+    // Clear the userInput after adding
+    userInput.value = "";
+}
+function completeDelete(e){
+    const item = e.target;
+    // Delete Task
+    if(item.classList[0] === "delete-btn"){
+        const todo = item.parentElement;
+        // Animation
+        todo.classList.add('slide');
+        todo.addEventListener('animationend',function(){
+            todo.remove();
+        });
+        
+    }
+    // Completed Task
+    if(item.classList[0] === "completed-btn"){
+        const todo = item.parentElement;
+        todo.classList.toggle("completed");
+    }
+
 }
 
 // ....

@@ -58,6 +58,7 @@ form button:hover{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all 0.5 ease ;
 }
 .task li{
     flex: 1;
@@ -75,3 +76,33 @@ form button:hover{
 .completed-btn{
     background: rgb(14, 223, 14);
 }
+.task-item{
+    padding: 0rem 0.5rem;
+}
+.completed{
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+/* The animation code */
+@keyframes myAnim {
+    0% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  
+    100% {
+      opacity: 0;
+      transform: translateX(250px);
+    }
+  }
+  /* The element to apply the animation to */
+  .slide {
+    animation-name: myAnim;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;    
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+  } 
+  
