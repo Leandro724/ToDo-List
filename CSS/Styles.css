@@ -1,8 +1,10 @@
+/* Removeing all default styling */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+/* Body and Background styles */
 body{
     background-color: rgb(238, 140, 48);
     background-image: url(../Images/pngwing.com.png);
@@ -11,6 +13,7 @@ body{
     background-position-x:center;
     
 }
+/* Header and Form Styles */
 header,form,.listContainer{
     font-size: 20px;
     display: flex;
@@ -40,6 +43,8 @@ form button:hover{
     background: rgb(238, 140, 48);
     color: antiquewhite;
 }
+
+/* List and Div Styles */
 
 .listContainer{
     display: flex;
@@ -105,4 +110,39 @@ form button:hover{
     animation-direction: normal;
     animation-fill-mode: forwards;
   } 
+
+  /* Select toggle styles */
+
+  /* Firstly removing default styling */
+  select{
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      outline: none;
+      border: none;
+
+  }
+
+  .select{
+      margin: 1rem;
+      position: relative;
+      overflow: hidden;
+  }
+  select{
+      color: rgb(238, 140, 48) ;
+      width: 10rem;
+      cursor: pointer;
+      padding: 1rem;
+  }
+  .select::after {
+    content: "\25BC";
+    position: absolute;
+    background: antiquewhite;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    pointer-events: none;
+
+
+  }
   
