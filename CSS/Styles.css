@@ -4,6 +4,17 @@
     box-sizing: border-box;
 }
 body{
-    background-color: rgb(233, 69, 225);
+    background-color: rgb(226, 166, 223);
+    background-image: url(../Images/pngwing.com.png);
+    background-repeat: no-repeat;
+    background-size: 100vh;
+    background-position-x:center;
     
+}
+header,form{
+    font-size: 25px;
+    min-height: 15vh;
+    display: flex;
+    justify-content:center;
+    align-items: center;
 }
