@@ -27,8 +27,10 @@ function addTask (event){
     // Delete button
     const taskDelete = document.createElement('button');
     taskDelete.innerText = 'Delete';
-    taskDelete.classList.add('completed-btn');
+    taskDelete.classList.add('delete-btn');
     taskDiv.appendChild(taskDelete);
     // Append to List Items
     listItems.appendChild(taskDiv);
 }
+
+// ....
