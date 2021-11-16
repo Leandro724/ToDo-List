@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color: rgb(226, 166, 223);
+    background-color: rgb(238, 140, 48);
     background-image: url(../Images/pngwing.com.png);
     background-repeat: no-repeat;
     background-size: 100vh;
@@ -12,9 +12,31 @@ body{
     
 }
 header,form{
-    font-size: 25px;
-    min-height: 15vh;
+    font-size: 20px;
     display: flex;
+    min-height: 7vh;
     justify-content:center;
     align-items: center;
+    position: relative; 
+    bottom:-165px;
+    
+}
+
+form input,form button{
+ 
+    font-size: 20px;
+    border-radius: 5px;
+    border-width: 0.5px;
+    background-color: antiquewhite;
+}
+form button{
+    color: rgb(238, 140, 48);
+    background: antiquewhite;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+form button:hover{
+    background: rgb(238, 140, 48);
+    color: antiquewhite;
 }
