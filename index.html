@@ -5,16 +5,26 @@
 </head>
 
 <body>
+
     <header>
         <h1>My ToDo List:</h1>
     </header>
    
+    <div class="select">
+        <select name="Tasks" class="filter-Tasks">
+            <option value="all">All</option>
+            <option value="completed">completed</option>
+            <option value="uncompleted">uncompleted</option>
+        </select>
+    </div>
 
     <form>
         <input type="text" id="userInput">
         <button type="submit" id="inputButton">Add</button>
     </form>
+
     <div class="listContainer">
+
         <ul id="listItems">
            
         </ul>
