@@ -30,7 +30,7 @@ function addTask (event){
     taskCompleted.classList.add('completed-btn');
     taskDiv.appendChild(taskCompleted);
 
-    // Edit
+    // Edit Button
     const editTask = document.createElement('button');
     editTask.innerText = 'Edit';
     editTask.classList.add('edit-btn');
