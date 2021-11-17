@@ -2,6 +2,7 @@
 const userInput = document.getElementById("userInput");
 const inputButton = document.getElementById("inputButton");
 const listItems = document.getElementById("listItems");
+const DateInput = document.getElementById("DueDate");
 
 
 // Even Listeners
@@ -11,6 +12,9 @@ listItems.addEventListener('click',completeDelete);
 
 
 // Functions
+function removeInput (){
+    document.getElementById("userInput").value = ""
+}
 
 function addTask (event){
     //Prevent form from submitting
@@ -21,8 +25,7 @@ function addTask (event){
     // Create List item
     const newTask = document.createElement('li');
     newTask.classList.add('task-item');
-    
-    newTask.innerText = userInput.value;
+    newTask.innerText =DateInput.value+":"+ userInput.value;
     taskDiv.appendChild(newTask);
     // Task Completed button
     const taskCompleted = document.createElement('button');
@@ -30,7 +33,7 @@ function addTask (event){
     taskCompleted.classList.add('completed-btn');
     taskDiv.appendChild(taskCompleted);
 
-    // Edit
+    // Edit Button
     const editTask = document.createElement('button');
     editTask.innerText = 'Edit';
     editTask.classList.add('edit-btn');
@@ -71,6 +74,7 @@ function completeDelete(e){
         var editValue = prompt('edit the select item', returnValue);
        returnValue = editValue;
        todo[0].innerText = returnValue;
+       
     
     }
     
