@@ -1,13 +1,117 @@
+/* Removeing all default styling */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+/* Body and Background styles */
 body{
+
     background-color: rgb(226, 166, 223);
+
+    background-color: rgb(238, 140, 48);
     background-image: url(../Images/pngwing.com.png);
     background-repeat: no-repeat;
     background-size: 100vh;
     background-position-x:center;
     
 }
+/* Header and Form Styles */
+header,form,.listContainer{
+    font-size: 20px;
+    display: flex;
+    min-height: 7vh;
+    justify-content:center;
+    align-items: center;
+    position: relative; 
+    bottom:-165px;
+    
+}
+
+form input,form button{
+ 
+    font-size: 20px;
+    border-radius: 5px;
+    border-width: 0.5px;
+    background-color: antiquewhite;
+}
+form button{
+    color: rgb(238, 140, 48);
+    background: antiquewhite;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+form button:hover{
+    background: rgb(238, 140, 48);
+    color: antiquewhite;
+}
+
+/* List and Div Styles */
+
+.listContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#listItems{
+    min-width: 25%;
+    list-style: none;
+}
+.task{
+    margin: 0.5rem;
+    background:rgb(238, 140, 48)  ;
+    color: antiquewhite;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.5 ease ;
+}
+.task li{
+    flex: 1;
+}
+
+.completed-btn,.delete-btn{
+    background: rgb(247, 73, 42) ;
+    color: antiquewhite;
+    border-radius: 5px;
+    border-width: 0.5px;
+    padding:0.5rem;
+    cursor: pointer;
+    font: size 1rem;
+}
+.completed-btn{
+    background: rgb(14, 223, 14);
+}
+.task-item{
+    padding: 0rem 0.5rem;
+}
+.completed{
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+/* The animation code */
+@keyframes myAnim {
+    0% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  
+    100% {
+      opacity: 0;
+      transform: translateX(250px);
+    }
+  }
+  /* The element to apply the animation to */
+  .slide {
+    animation-name: myAnim;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;    
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+  } 
+
+ 
