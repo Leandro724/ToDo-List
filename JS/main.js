@@ -3,9 +3,11 @@ const userInput = document.getElementById("userInput");
 const inputButton = document.getElementById("inputButton");
 const listItems = document.getElementById("listItems");
 
+
 // Even Listeners
 inputButton.addEventListener('click',addTask);
 listItems.addEventListener('click',completeDelete);
+
 
 // Functions
 
@@ -54,5 +56,6 @@ function completeDelete(e){
     }
 
 }
+
 
 // ....

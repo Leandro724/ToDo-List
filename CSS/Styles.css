@@ -111,38 +111,4 @@ form button:hover{
     animation-fill-mode: forwards;
   } 
 
-  /* Select toggle styles */
-
-  /* Firstly removing default styling */
-  select{
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      outline: none;
-      border: none;
-
-  }
-
-  .select{
-      margin: 1rem;
-      position: relative;
-      overflow: hidden;
-  }
-  select{
-      color: rgb(238, 140, 48) ;
-      width: 10rem;
-      cursor: pointer;
-      padding: 1rem;
-  }
-  .select::after {
-    content: "\25BC";
-    position: absolute;
-    background: antiquewhite;
-    top: 0;
-    right: 0;
-    padding: 1rem;
-    pointer-events: none;
-
-
-  }
-  
+ 
