@@ -71,8 +71,10 @@ function completeDelete(e){
         const parentElement = item.parentElement;
         const todo = parentElement.childNodes;
         let returnValue = todo[0].innerText;
-        var editValue = prompt('edit the select item', returnValue);
-       returnValue = editValue;
+        let returnDate = todo[0].innerText;
+        var editValue = prompt('Edit Task', returnValue);
+        var editDate = prompt('Edit Date', returnDate);
+       returnValue = editDate+":"+editValue;
        todo[0].innerText = returnValue;
        
     
