@@ -6,7 +6,8 @@ const listItems = document.getElementById("listItems");
 
 // Even Listeners
 inputButton.addEventListener('click',addTask);
-listItems.addEventListener('click',completeDeleteEdit);
+listItems.addEventListener('click',completeDelete);
+
 
 
 // Functions
@@ -20,6 +21,7 @@ function addTask (event){
     // Create List item
     const newTask = document.createElement('li');
     newTask.classList.add('task-item');
+    
     newTask.innerText = userInput.value;
     taskDiv.appendChild(newTask);
     // Task Completed button
@@ -27,11 +29,13 @@ function addTask (event){
     taskCompleted.innerText = 'Done';
     taskCompleted.classList.add('completed-btn');
     taskDiv.appendChild(taskCompleted);
+
     // Edit
     const editTask = document.createElement('button');
     editTask.innerText = 'Edit';
     editTask.classList.add('edit-btn');
     taskDiv.appendChild(editTask);
+
     // Delete button
     const taskDelete = document.createElement('button');
     taskDelete.innerText = 'Delete';
@@ -42,7 +46,7 @@ function addTask (event){
     // Clear the userInput after adding
     userInput.value = "";
 }
-function completeDeleteEdit(e){
+function completeDelete(e){
     const item = e.target;
     // Delete Task
     if(item.classList[0] === "delete-btn"){
@@ -59,8 +63,16 @@ function completeDeleteEdit(e){
         const todo = item.parentElement;
         todo.classList.toggle("completed");
     }
-
+    // Edit Task
+    if(item.classList[0] === "edit-btn"){
+        const parentElement = item.parentElement;
+        const todo = parentElement.childNodes;
+        let returnValue = todo[0].innerText;
+        var editValue = prompt('edit the select item', returnValue);
+       returnValue = editValue;
+       todo[0].innerText = returnValue;
+    
+    }
+    
 }
-
-
-// ....
+ 
