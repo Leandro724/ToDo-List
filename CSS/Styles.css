@@ -72,7 +72,9 @@ form button:hover{
     flex: 1;
 }
 
-.completed-btn,.delete-btn{
+/* Button Styles */
+
+.completed-btn,.delete-btn , .edit-btn{
     background: rgb(247, 73, 42) ;
     color: antiquewhite;
     border-radius: 5px;
@@ -83,6 +85,9 @@ form button:hover{
 }
 .completed-btn{
     background: rgb(14, 223, 14);
+}
+.edit-btn{
+    background: rgb(14, 199, 223);
 }
 .task-item{
     padding: 0rem 0.5rem;
