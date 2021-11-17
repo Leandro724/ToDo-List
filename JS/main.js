@@ -6,7 +6,7 @@ const listItems = document.getElementById("listItems");
 
 // Even Listeners
 inputButton.addEventListener('click',addTask);
-listItems.addEventListener('click',completeDelete);
+listItems.addEventListener('click',completeDeleteEdit);
 
 
 // Functions
@@ -27,6 +27,11 @@ function addTask (event){
     taskCompleted.innerText = 'Done';
     taskCompleted.classList.add('completed-btn');
     taskDiv.appendChild(taskCompleted);
+    // Edit Button
+    const editTask = document.createElement('button');
+    editTask.innerText = 'Done';
+    editTask.classList.add('edit-btn');
+    taskDiv.appendChild(editTask);
     // Delete button
     const taskDelete = document.createElement('button');
     taskDelete.innerText = 'Delete';
@@ -37,7 +42,7 @@ function addTask (event){
     // Clear the userInput after adding
     userInput.value = "";
 }
-function completeDelete(e){
+function completeDeleteEdit(e){
     const item = e.target;
     // Delete Task
     if(item.classList[0] === "delete-btn"){
