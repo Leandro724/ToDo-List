@@ -22,13 +22,16 @@ let CloseEdit = document.getElementsByClassName("close-Edit")[0];
 // Even Listeners
 inputButton.addEventListener('click',addTask);
 
-// editButton.addEventListener('click',completeDelete);
+document.addEventListener("DOMContentLoaded", getTodos);
 
 listItems.addEventListener('click',completeDelete);
 
 CloseEdit.addEventListener('click',closeTask);
 
 CloseBtn.addEventListener('click',newTask);
+
+// Array
+const TasksArray = [];
 
 
 
@@ -75,12 +78,14 @@ function addTask (event){
 
     const taskDiv2 = document.createElement('div');
     taskDiv2.classList.add('taskInput');
-    taskDiv2.innerHTML = userInput.value;
+    const taskName = userInput.value;
+    taskDiv2.innerHTML = taskName;
     taskDiv.appendChild(taskDiv2);
 
     const taskDiv3 = document.createElement('div');
     taskDiv3.classList.add('dueDate');
-    taskDiv3.innerHTML = DateInput.value;
+    const taskDate = DateInput.value;
+    taskDiv3.innerHTML = taskDate;
     taskDiv.appendChild(taskDiv3);
 
     const taskDiv4 = document.createElement('div');
@@ -111,9 +116,12 @@ function addTask (event){
 
     
     // Append to List Items
+
     const listItem = document.createElement("li");
     listItem.appendChild(taskDiv)
     MyTasks.appendChild(listItem);
+    TasksArray.push(taskName);
+    console.log(TasksArray);
     // Clear the userInput after adding
     userInput.value = "";
     
@@ -165,3 +173,61 @@ function completeDelete(e){
     
 }
  
+ function sortTasks(){
+     console.log(TasksArray.sort());
+
+ }
+
+ function saveLocalTasks(todo) {
+    let todos;
+    if (localStorage.getItem("todos") === null) {
+      todos = [];
+    } else {
+      todos = JSON.parse(localStorage.getItem("todos"));
+    }
+    todos.push(todo);
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }
+  function removeLocalTasks(todo) {
+    let todos;
+    if (localStorage.getItem("todos") === null) {
+      todos = [];
+    } else {
+      todos = JSON.parse(localStorage.getItem("todos"));
+    }
+    const todoIndex = todo.children[0].innerText;
+    todos.splice(todos.indexOf(todoIndex), 1);
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }
+  
+  function getTasks() {
+    let todos;
+    if (localStorage.getItem("todos") === null) {
+      todos = [];
+    } else {
+      todos = JSON.parse(localStorage.getItem("todos"));
+    }
+    todos.forEach(function(todo) {
+      //Create todo div
+      const todoDiv = document.createElement("div");
+      todoDiv.classList.add("todo");
+      //Create list
+      const newTodo = document.createElement("li");
+      newTodo.innerText = todo;
+      newTodo.classList.add("todo-item");
+      todoDiv.appendChild(newTodo);
+      todoInput.value = "";
+      //Create Completed Button
+      const completedButton = document.createElement("button");
+      completedButton.innerHTML = `<i class="fas fa-check"></i>`;
+      completedButton.classList.add("complete-btn");
+      todoDiv.appendChild(completedButton);
+      //Create trash button
+      const trashButton = document.createElement("button");
+      trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
+      trashButton.classList.add("trash-btn");
+      todoDiv.appendChild(trashButton);
+      //attach final Todo
+      todoList.appendChild(todoDiv);
+    });
+  }

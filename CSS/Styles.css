@@ -23,6 +23,12 @@ body{
    top: 2%;
    font-family: "Architects Daughter";
 }
+#container1{
+    position:absolute;
+    left: 15%;
+    top: 2%;
+    font-family: "Architects Daughter";
+ }
 .container1 button{
     background: rgb(238, 140, 48);
     border-color: antiquewhite;
