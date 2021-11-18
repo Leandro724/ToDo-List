@@ -8,6 +8,7 @@
 body{
     background: rgb(238, 140, 48);
     font-family: "Architects Daughter";
+    min-height: 100vh;
     
 }
 .main-container{
@@ -93,6 +94,9 @@ ul {
     border-radius: 5px;
     
     
+}
+.bi-check-circle,.bi-pencil-square,.bi-trash{
+    pointer-events: none;
 }
 
  #Edit{
@@ -338,9 +342,13 @@ ul {
     animation-duration: 0.5s;
     animation-timing-function: ease-out;
     animation-delay: 0s;
-    animation-iteration-count: 1;    
+    animation-iteration-count:1;    
     animation-direction: normal;
     animation-fill-mode: forwards;
   } 
+  .fall {
+    transform: translateY(10rem) rotateZ(20deg);
+    opacity: 0;
+  }
 
  

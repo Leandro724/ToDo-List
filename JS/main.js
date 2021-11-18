@@ -1,38 +1,29 @@
 // Selectors
-const userInput = document.getElementById("userInput");
-const DateInput = document.getElementById("DueDate");
 
-const editInput = document.getElementById("editInput");
-const editDate = document.getElementById("editDate");
+// Add Task Popup Selectors
+const userInput = document.querySelector(".userInput");
+const DateInput = document.querySelector(".DueDate");
+const inputButton = document.querySelector(".inputButton");
+let CloseBtn = document.querySelector(".close-Popup");
+let PopupForm = document.querySelector(".container3");
 
-const inputButton = document.getElementById("inputButton");
+// Edit Task Popup Selectors
+const editInput = document.querySelector(".editInput");
+const editDate = document.querySelector(".editDate");
+let CloseEdit = document.querySelector(".close-Edit");
+let EditForm = document.querySelector(".container4");
+let saveChanges = document.querySelector(".saveChanges");
+
+// Tasks List Selector
 const MyTasks = document.querySelector(".MyTasks");
 
-
-const listItems = document.getElementsByClassName("main-container")[0];
-// let TaskDisplay = document.getElementsByClassName("container2")[0];
-let PopupForm = document.getElementsByClassName("container3")[0];
-let EditForm = document.getElementsByClassName("container4")[0];
-
-let CloseBtn = document.getElementsByClassName("close-Popup")[0];
-let CloseEdit = document.getElementsByClassName("close-Edit")[0];
-
-
-
 // Even Listeners
+document.addEventListener("DOMContentLoaded", getTasks);
 inputButton.addEventListener('click',addTask);
-
-document.addEventListener("DOMContentLoaded", getTodos);
-
-listItems.addEventListener('click',completeDelete);
-
-CloseEdit.addEventListener('click',closeTask);
-
+MyTasks.addEventListener('click',deleteTask);
+CloseEdit.addEventListener('click',closeEdit);
 CloseBtn.addEventListener('click',newTask);
-
-// Array
-const TasksArray = [];
-
+saveChanges.addEventListener('click',editTask)
 
 
 
@@ -45,7 +36,7 @@ function newTask (){
     }
     
 }
-function closeTask (){
+function closeEdit (){
     if(EditForm.style.display == "none"){
         EditForm.style.display = "block";
     }else{
@@ -53,44 +44,33 @@ function closeTask (){
     }
 }
 
-function saveChanges (e){
-    const item = e.target;
-    const innerElement = item.parentElement;
-    const outerElement = innerElement.parentElement;
-    const todo = outerElement.childNodes;
-    let returnValue = todo[1].innerText;
-    let returnDate = todo[2].innerText;
-}
-
 function addTask (event){
     //Prevent form from submitting
     event.preventDefault();
-
     // Creating List Item
     const taskDiv = document.createElement('div');
     taskDiv.classList.add('listTask');
-    
 
     // Creating Divs Inside List Item
     const taskDiv1 = document.createElement('div');
     taskDiv1.classList.add('colorDiv');
-    taskDiv.appendChild(taskDiv1);
+    // taskDiv.appendChild(taskDiv1);
 
     const taskDiv2 = document.createElement('div');
     taskDiv2.classList.add('taskInput');
     const taskName = userInput.value;
     taskDiv2.innerHTML = taskName;
-    taskDiv.appendChild(taskDiv2);
+    // taskDiv.appendChild(taskDiv2);
 
     const taskDiv3 = document.createElement('div');
     taskDiv3.classList.add('dueDate');
     const taskDate = DateInput.value;
     taskDiv3.innerHTML = taskDate;
-    taskDiv.appendChild(taskDiv3);
+    // taskDiv.appendChild(taskDiv3);
 
     const taskDiv4 = document.createElement('div');
     taskDiv4.classList.add('controls');
-    taskDiv.appendChild(taskDiv4);
+    // taskDiv.appendChild(taskDiv4);
 
     // Creating Control buttons Complete/Edit/Delete
 
@@ -118,31 +98,35 @@ function addTask (event){
     // Append to List Items
 
     const listItem = document.createElement("li");
-    listItem.appendChild(taskDiv)
-    MyTasks.appendChild(listItem);
-    TasksArray.push(taskName);
-    console.log(TasksArray);
+    listItem.appendChild(taskDiv1)
+    listItem.appendChild(taskDiv2)
+    listItem.appendChild(taskDiv3)
+    listItem.appendChild(taskDiv4)
+    taskDiv.appendChild(listItem);
+    MyTasks.appendChild(taskDiv);
+    
     // Clear the userInput after adding
     userInput.value = "";
     
 }
-function completeDelete(e){
+function deleteTask(e){
     const item = e.target;
-    let returnValue;
-        let returnDate;
+   
+   
     // Delete Task
     if(item.classList[0] === "delete-btn"){
-        const todo = item.parentElement;
-        const childDiv = todo.parentElement;
+        const task = item.parentElement;
+        const childDiv = task.parentElement;
         let parentDiv = childDiv.parentElement;
-        // Animation
         
+        // Animation
         parentDiv.classList.add('slide');
-        todo.addEventListener('animationend',function(){
+        parentDiv.addEventListener('animationend',function(){
             parentDiv.remove();
         });
         
     }
+   
     // Completed Task
     if(item.classList[0] === "completed-btn"){
         const todo = item.parentElement;
@@ -152,82 +136,17 @@ function completeDelete(e){
     }
     // Edit Task
     if(item.classList[0] === "edit-btn"){
-        closeTask ();
-        const innerElement = item.parentElement;
-        const outerElement = innerElement.parentElement;
-        const todo = outerElement.childNodes;
-        returnValue = todo[1].innerText;
-        returnDate = todo[2].innerText;
-        
+      closeEdit ();
     }
-    if(item.classList[0] === "saveChanges"){
-        // const innerElement = item.parentElement;
-        // const outerElement = innerElement.parentElement;
-        // const todo = outerElement.childNodes;
-        // let returnValue = todo[1].innerText;
-        // let returnDate = todo[2].innerText;
-        console.log(returnValue);
-        console.log(returnDate);
-    }
-
     
 }
- 
- function sortTasks(){
-     console.log(TasksArray.sort());
-
- }
-
- function saveLocalTasks(todo) {
-    let todos;
-    if (localStorage.getItem("todos") === null) {
-      todos = [];
-    } else {
-      todos = JSON.parse(localStorage.getItem("todos"));
-    }
-    todos.push(todo);
-    localStorage.setItem("todos", JSON.stringify(todos));
+function editTask(e){
+  const item = e.target;
+  console.log(item);
+}
+function saveLocalTasks(task) {
   }
-  function removeLocalTasks(todo) {
-    let todos;
-    if (localStorage.getItem("todos") === null) {
-      todos = [];
-    } else {
-      todos = JSON.parse(localStorage.getItem("todos"));
-    }
-    const todoIndex = todo.children[0].innerText;
-    todos.splice(todos.indexOf(todoIndex), 1);
-    localStorage.setItem("todos", JSON.stringify(todos));
+function removeLocalTasks(task) {
   }
-  
-  function getTasks() {
-    let todos;
-    if (localStorage.getItem("todos") === null) {
-      todos = [];
-    } else {
-      todos = JSON.parse(localStorage.getItem("todos"));
-    }
-    todos.forEach(function(todo) {
-      //Create todo div
-      const todoDiv = document.createElement("div");
-      todoDiv.classList.add("todo");
-      //Create list
-      const newTodo = document.createElement("li");
-      newTodo.innerText = todo;
-      newTodo.classList.add("todo-item");
-      todoDiv.appendChild(newTodo);
-      todoInput.value = "";
-      //Create Completed Button
-      const completedButton = document.createElement("button");
-      completedButton.innerHTML = `<i class="fas fa-check"></i>`;
-      completedButton.classList.add("complete-btn");
-      todoDiv.appendChild(completedButton);
-      //Create trash button
-      const trashButton = document.createElement("button");
-      trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
-      trashButton.classList.add("trash-btn");
-      todoDiv.appendChild(trashButton);
-      //attach final Todo
-      todoList.appendChild(todoDiv);
-    });
+function getTasks() {
   }
