@@ -41,12 +41,12 @@ body{
     
 }
 /* Tasks Display */
-.container2{
+ul {
+    list-style: none;
     display: flex;
-    justify-content: flex-start;
     flex-wrap: wrap;
-    margin-left: 5%;
 }
+
 .listTask{
     background-color: antiquewhite;
     box-shadow: 0 0 10px 4px rgba(0,0,0,0.15);
@@ -64,8 +64,8 @@ body{
 }
 .taskInput,.dueDate{
     padding: 25px;
-    
     border-radius: 5px;
+    font-family: "Architects Daughter";
 }
 .dueDate{
     padding: 15px;
@@ -85,6 +85,7 @@ body{
     width: 30px;
     height: 30px;
     border-radius: 5px;
+    
     
 }
 
@@ -173,6 +174,83 @@ body{
         color: antiquewhite;
     
 }
+/* Popup Edit Form */
+.container4{
+    display: none;
+    position: fixed;
+    background-image: url(../Images/pngwing.com.png);
+    background-repeat: no-repeat;
+    background-size:210%;
+    background-position-x: center;
+    background-position-y: center;
+    width: 350px;
+    height: 500px;
+    left: 40%;
+    top: 5%;
+    padding: 40px 50px;
+    border-radius: 35px;
+    box-shadow: 2px 2px 5px 5px rgba(0,0,0,0.15);
+}
+.container4 .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    width: 20px;
+    height: 20px;
+    background: rgb(238, 140, 48) ;
+    color: rgb(54, 53, 53);
+    border-radius: 3px;
+    cursor: pointer;
+
+}
+
+
+.container4 .form-element{
+    margin: 15px 0px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    
+    justify-content:center;
+    align-items: center;
+    position: relative; 
+    bottom:-80px;
+    
+}
+.container4 .form-element label{
+    font-size: 24px ;
+    color: rgb(238, 140, 48);
+    font-family: "Architects Daughter";
+}
+.container4 .form-element input[type="text"],
+.container4 .form-element input[type="date"]{
+    margin-top: 5px;
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    border: 1px solid rgb(238, 140, 48);
+    border-radius: 15px;
+    font-family: "Architects Daughter";
+}
+.container4 .form-element button {
+        color: rgb(238, 140, 48);
+        background: antiquewhite;
+        width: 100%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+        border-radius: 15px;
+        outline: none ;
+        font-size: 25px;
+        padding: 10px;
+        font-family: "Architects Daughter";
+
+}
+.container4 .form-element button:hover{
+        background: rgb(238, 140, 48);
+        color: antiquewhite;
+    
+}
 /* Header and Form Styles */
 .listContainer{
     font-size: 20px;
@@ -212,6 +290,7 @@ body{
 
 /* Button Styles */
 
+
 .completed-btn,.delete-btn , .edit-btn{
     background: rgb(247, 73, 42) ;
     color: antiquewhite;
@@ -223,6 +302,7 @@ body{
 }
 .completed-btn{
     background: rgb(14, 223, 14);
+    
 }
 .edit-btn{
     background: rgb(14, 199, 223);
@@ -232,7 +312,7 @@ body{
 }
 .completed{
     text-decoration: line-through;
-    opacity: 0.5;
+    opacity: 0.25;
 }
 /* The animation code */
 @keyframes myAnim {
