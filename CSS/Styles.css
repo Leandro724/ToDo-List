@@ -6,56 +6,136 @@
 }
 /* Body and Background styles */
 body{
+    background: rgb(238, 140, 48);
+    font-family: "Architects Daughter";
+    
+}
+.main-container{
+    background: rgb(238, 140, 48);
+    height: 100%;
+    width: 100%;
+   margin: auto;
+}
+/* New Task button */
+.container1{
+   position:absolute;
+   left: 5%;
+   top: 5%;
+   font-family: "Architects Daughter";
+}
+.container1 button{
+    background: rgb(238, 140, 48);
+    border-color: antiquewhite;
+}
+.container1 button:hover{
+    background: antiquewhite ;
+    border-color:  rgb(238, 140, 48);
+    color: rgb(238, 140, 48);
+}
+.container1 button:focus {
+    background:rgb(238, 140, 48) ;
+    border-color:  rgb(238, 140, 48);
+    color: antiquewhite;
+    box-shadow: none;
+  
+    
+}
+/* Tasks Display */
+.container2{
+    display: flex;
+    justify-self: flex-start;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-left: 5%;
 
-    background-color: rgb(226, 166, 223);
+}
 
-    background-color: rgb(238, 140, 48);
+/* Popup Form */
+.container3{
+    /* display: none; */
+    position: absolute;
     background-image: url(../Images/pngwing.com.png);
     background-repeat: no-repeat;
-    background-size: 100vh;
-    background-position-x:center;
-    
+    background-size:210%;
+    background-position-x: center;
+    background-position-y: center;
+    width: 350px;
+    height: 500px;
+    left: 60%;
+    padding: 40px 50px;
+    border-radius: 35px;
+    box-shadow: 2px 2px 5px 5px rgba(0,0,0,0.15);
 }
-/* Header and Form Styles */
-header,.listContainer{
-    font-size: 20px;
-    display: flex;
-    min-height: 7vh;
-    justify-content:center;
-    align-items: center;
-    position: relative; 
-    bottom:-165px;
-    
+.container3 .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    width: 20px;
+    height: 20px;
+    background: rgb(238, 140, 48) ;
+    color: rgb(54, 53, 53);
+    border-radius: 3px;
+    cursor: pointer;
+
 }
-form{
+
+
+.container3 .form-element{
+    margin: 15px 0px;
     font-size: 20px;
     display: flex;
     flex-direction: column;
+    
+    justify-content:center;
+    align-items: center;
+    position: relative; 
+    bottom:-80px;
+    
+}
+.container3 .form-element label{
+    font-size: 24px ;
+    color: rgb(238, 140, 48);
+    font-family: "Architects Daughter";
+}
+.container3 .form-element input[type="text"],
+.container3 .form-element input[type="date"]{
+    margin-top: 5px;
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    border: 1px solid rgb(238, 140, 48);
+    border-radius: 15px;
+    font-family: "Architects Daughter";
+}
+.container3 .form-element button {
+        color: rgb(238, 140, 48);
+        background: antiquewhite;
+        width: 100%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+        border-radius: 15px;
+        outline: none ;
+        font-size: 25px;
+        padding: 10px;
+        font-family: "Architects Daughter";
+
+}
+.container3 .form-element button:hover{
+        background: rgb(238, 140, 48);
+        color: antiquewhite;
+    
+}
+/* Header and Form Styles */
+.listContainer{
+    font-size: 20px;
+    display: flex;
     min-height: 7vh;
     justify-content:center;
     align-items: center;
     position: relative; 
     bottom:-165px;
     
-}
-
-#userInput,#inputButton,#DueDate{
- 
-    font-size: 20px;
-    border-radius: 5px;
-    border-width: 0.5px;
-    background-color: antiquewhite;
-}
-#inputButton{
-    color: rgb(238, 140, 48);
-    background: antiquewhite;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-#inputButton:hover{
-    background: rgb(238, 140, 48);
-    color: antiquewhite;
 }
 
 /* List and Div Styles */
