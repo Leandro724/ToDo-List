@@ -3,17 +3,25 @@ const userInput = document.getElementById("userInput");
 const inputButton = document.getElementById("inputButton");
 const listItems = document.getElementById("listItems");
 const DateInput = document.getElementById("DueDate");
+let TaskDisplay = document.getElementsByClassName("container2")[0];
+let PopupForm = document.getElementsByClassName("container3")[0];
+let CloseBtn = document.getElementsByClassName("close-Popup")[0];
 
 
 // Even Listeners
 inputButton.addEventListener('click',addTask);
-listItems.addEventListener('click',completeDelete);
-
+// listItems.addEventListener('click',completeDelete);
+CloseBtn.addEventListener('click',newTask);
 
 
 // Functions
-function removeInput (){
-    document.getElementById("userInput").value = ""
+function newTask (){
+    if(PopupForm.style.display == "none"){
+        PopupForm.style.display = "block";
+    }else{
+        PopupForm.style.display = "none";
+    }
+    
 }
 
 function addTask (event){
