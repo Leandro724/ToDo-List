@@ -19,8 +19,8 @@ body{
 /* New Task button */
 .container1{
    position:absolute;
-   left: 5%;
-   top: 5%;
+   left: 2%;
+   top: 2%;
    font-family: "Architects Daughter";
 }
 .container1 button{
@@ -43,17 +43,63 @@ body{
 /* Tasks Display */
 .container2{
     display: flex;
-    justify-self: flex-start;
+    justify-content: flex-start;
     flex-wrap: wrap;
-    margin-top: 20px;
     margin-left: 5%;
+}
+.listTask{
+    background-color: antiquewhite;
+    box-shadow: 0 0 10px 4px rgba(0,0,0,0.15);
+    margin: 80px 20px;
+    width: 200px;
+    height: 200px;
+    border: 1px solid antiquewhite;
+  
+    border-radius: 5px;
+}
+.colorDiv{
+    background-color: green;
+    padding: 10px;
+    width: 100%;
+}
+.taskInput,.dueDate{
+    padding: 25px;
+    
+    border-radius: 5px;
+}
+.dueDate{
+    padding: 15px;
+    
+    border-radius: 5px;
+}
+.controls{
+    padding: 6px;
 
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-end;
+}
+.controls button{
+    background-color: rgb(15, 201, 15);
+    border:none;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    
 }
 
+ #Edit{
+    background-color: rgb(62, 197, 241);
+    
+}
+ #Delete{
+    background-color: red;
+    
+}
 /* Popup Form */
 .container3{
-    /* display: none; */
-    position: absolute;
+    display: none;
+    position: fixed;
     background-image: url(../Images/pngwing.com.png);
     background-repeat: no-repeat;
     background-size:210%;
@@ -61,7 +107,8 @@ body{
     background-position-y: center;
     width: 350px;
     height: 500px;
-    left: 60%;
+    left: 10%;
+    top: 5%;
     padding: 40px 50px;
     border-radius: 35px;
     box-shadow: 2px 2px 5px 5px rgba(0,0,0,0.15);
