@@ -20,7 +20,7 @@ const MyTasks = document.querySelector(".MyTasks");
 // Even Listeners
 document.addEventListener("DOMContentLoaded", getTasks);
 inputButton.addEventListener('click',addTask);
-MyTasks.addEventListener('click',deleteTask);
+MyTasks.addEventListener('click',CompleteDeleteTask);
 CloseEdit.addEventListener('click',closeEdit);
 CloseBtn.addEventListener('click',newTask);
 saveChanges.addEventListener('click',editTask)
@@ -113,8 +113,8 @@ function addTask (event){
     userInput.value = "";
     
 }
-
-function deleteTask(e){
+// Complete and Delete Function
+function CompleteDeleteTask(e){
     const item = e.target;
     // Delete Task
     if(item.classList[0] === "delete-btn"){
@@ -132,7 +132,6 @@ function deleteTask(e){
         parentDiv.classList.add('slide');
         // Just before the animation ends
         removeLocalTasks(task);
-        console.log(task +": Has been removed from Local Storage")
         parentDiv.addEventListener('animationend',function(){
             parentDiv.remove();
         });
@@ -143,7 +142,6 @@ function deleteTask(e){
     if(item.classList[0] === "completed-btn"){
         const todo = item.parentElement;
         const childDiv = todo.parentElement;
-        console.log(childDiv);
         const parentDiv = childDiv.parentElement;
         parentDiv.classList.toggle("completed");
     }
@@ -153,9 +151,49 @@ function deleteTask(e){
     }
     
 }
+
+// Edit Function
 function editTask(e){
   const item = e.target;
-  console.log(item);
+
+  // Access value inside the Edit Form
+  if(item.classList[0] === "saveChanges"){
+    let task = item.parentElement;
+    const childDiv = task.parentElement;
+    let parentDiv = childDiv.childNodes;
+    let editValue = parentDiv[3].childNodes;
+    let editDate = parentDiv[5].childNodes;
+     let newVal = editValue[3];
+     let newDate = editDate[3];
+
+      let Tasks;
+      let Storage;
+
+      // Change the values inside the Local Storage
+ 
+  if(localStorage.getItem("Tasks") === null){
+    Tasks = {};
+    Storage = [];
+   
+  }else {
+    storedTasks = localStorage.getItem("Tasks");
+    Storage = JSON.parse(storedTasks)
+    Tasks = {};
+  }
+
+     Storage.forEach(function(task){
+      task.Task = newVal.value ;
+      console.log(task.Task);
+  
+      task.Date = newDate.value;
+      console.log(task.Date);
+ })
+   
+  
+ 
+
+
+}
 }
 
 // Save,Remove and Get Tasks from Local Storage Functions
@@ -192,7 +230,7 @@ function removeLocalTasks(task) {
     storedTasks = localStorage.getItem("Tasks");
     Storage = JSON.parse(storedTasks)
     results = Storage.filter(obj => obj.Task !== task);
-    console.log(results)
+   
   }
   localStorage.setItem("Tasks", JSON.stringify(results));
   }
