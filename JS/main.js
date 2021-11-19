@@ -113,24 +113,29 @@ function addTask (event){
     userInput.value = "";
     
 }
+
 function deleteTask(e){
     const item = e.target;
     // Delete Task
     if(item.classList[0] === "delete-btn"){
-        const task = item.parentElement;
+        let task = item.parentElement;
         const childDiv = task.parentElement;
         let parentDiv = childDiv.parentElement;
+
+        // Accessing the inputValue
+        var c = parentDiv.childNodes;
+               let result = c[0];
+               let inputValue = result.childNodes;
+        task = inputValue[1].innerHTML;
         
         // Animation
         parentDiv.classList.add('slide');
         // Just before the animation ends
-        // removeLocalTasks(task);
-        console.log(childDiv[1].innerText)
-
-
-        // parentDiv.addEventListener('animationend',function(){
-        //     parentDiv.remove();
-        // });
+        removeLocalTasks(task);
+        console.log(task +": Has been removed from Local Storage")
+        parentDiv.addEventListener('animationend',function(){
+            parentDiv.remove();
+        });
         
     }
    
@@ -152,6 +157,8 @@ function editTask(e){
   const item = e.target;
   console.log(item);
 }
+
+// Save,Remove and Get Tasks from Local Storage Functions
 function saveLocalTasks(task,date) {
   let Tasks;
   let Storage;
@@ -201,8 +208,8 @@ function getTasks() {
 
     storedTasks = localStorage.getItem("Tasks");
     Storage = JSON.parse(storedTasks)
+    Tasks = {};
   }
-
   Storage.forEach(function(task){
     const taskDiv = document.createElement('div');
     taskDiv.classList.add('listTask');
@@ -214,13 +221,14 @@ function getTasks() {
 
     const taskDiv2 = document.createElement('div');
     taskDiv2.classList.add('taskInput');
-    const taskName = task;
+    const taskName = task.Task;
+    
     taskDiv2.innerHTML = taskName;
     // taskDiv.appendChild(taskDiv2);
 
     const taskDiv3 = document.createElement('div');
     taskDiv3.classList.add('dueDate');
-    const taskDate = task;
+    const taskDate = task.Date;
     taskDiv3.innerHTML = taskDate;
     // taskDiv.appendChild(taskDiv3);
 
