@@ -65,6 +65,7 @@ function addTask (event){
     const taskDiv3 = document.createElement('div');
     taskDiv3.classList.add('dueDate');
     const taskDate = DateInput.value;
+    
     taskDiv3.innerHTML = taskDate;
     // taskDiv.appendChild(taskDiv3);
 
@@ -123,11 +124,13 @@ function deleteTask(e){
         // Animation
         parentDiv.classList.add('slide');
         // Just before the animation ends
-        removeLocalTasks(task,task);
+        // removeLocalTasks(task);
+        console.log(childDiv[1].innerText)
 
-        parentDiv.addEventListener('animationend',function(){
-            parentDiv.remove();
-        });
+
+        // parentDiv.addEventListener('animationend',function(){
+        //     parentDiv.remove();
+        // });
         
     }
    
@@ -135,7 +138,8 @@ function deleteTask(e){
     if(item.classList[0] === "completed-btn"){
         const todo = item.parentElement;
         const childDiv = todo.parentElement;
-        const parentDiv = todo.parentElement;
+        console.log(childDiv);
+        const parentDiv = childDiv.parentElement;
         parentDiv.classList.toggle("completed");
     }
     // Edit Task
@@ -150,50 +154,56 @@ function editTask(e){
 }
 function saveLocalTasks(task,date) {
   let Tasks;
-  let Dates;
+  let Storage;
+ 
   if(localStorage.getItem("Tasks") === null){
-    Tasks = [];
-    Dates = [];
+    Tasks = {};
+    Storage = [];
+   
   }else {
-    Tasks = JSON.parse(localStorage.getItem("Tasks"));
-    Dates = JSON.parse(localStorage.getItem("Dates"));
-  }
-  Tasks.push(task);
-  Dates.push(date);
 
-  localStorage.setItem("Tasks", JSON.stringify(Tasks));
-  localStorage.setItem("Dates", JSON.stringify(Dates));
+    storedTasks = localStorage.getItem("Tasks");
+    Storage = JSON.parse(storedTasks)
+    Tasks = {};
   }
-function removeLocalTasks(task,date) {
-  let Tasks;
-  let Dates;
+  
+  Tasks.Task = task;
+  Tasks.Date = date;
+  Storage.push(Tasks);
+
+  localStorage.setItem("Tasks", JSON.stringify(Storage));
+
+  }
+function removeLocalTasks(task) {
+  let results;
+  let storedTasks;
+
+  let Storage;
   if(localStorage.getItem("Tasks") === null){
-    Tasks = [];
-    Dates = [];
-
+    Storage = [];
   } else {
-    Tasks = JSON.parse(localStorage.getItem("Tasks"));
-    Dates = JSON.parse(localStorage.getItem("Dates"));
+    storedTasks = localStorage.getItem("Tasks");
+    Storage = JSON.parse(storedTasks)
+    results = Storage.filter(obj => obj.Task !== task);
+    console.log(results)
   }
-  const taskIndex = task.children[0].value;
-  const dateIndex = date.children[0].value;
-
-  Tasks.splice(Tasks.indexOf(taskIndex),1);
-  Dates.splice(Dates.indexOf(taskIndex),1);
-  localStorage.setItem("Tasks",JSON.stringify(Tasks));
-  localStorage.setItem("Dates",JSON.stringify(Dates));
+  localStorage.setItem("Tasks", JSON.stringify(results));
   }
 function getTasks() {
   let Tasks;
-  let Dates;
+  let Storage;
+ 
   if(localStorage.getItem("Tasks") === null){
-    Tasks = [];
-    Dates = [];
-  } else {
-    Tasks = JSON.parse(localStorage.getItem("Tasks"));
-    Dates = JSON.parse(localStorage.getItem("Dates"));
+    Tasks = {};
+    Storage = [];
+   
+  }else {
+
+    storedTasks = localStorage.getItem("Tasks");
+    Storage = JSON.parse(storedTasks)
   }
-  Tasks.forEach(function(task){
+
+  Storage.forEach(function(task){
     const taskDiv = document.createElement('div');
     taskDiv.classList.add('listTask');
 
@@ -210,7 +220,7 @@ function getTasks() {
 
     const taskDiv3 = document.createElement('div');
     taskDiv3.classList.add('dueDate');
-    const taskDate = date
+    const taskDate = task;
     taskDiv3.innerHTML = taskDate;
     // taskDiv.appendChild(taskDiv3);
 
@@ -255,4 +265,8 @@ function getTasks() {
     userInput.value = "";
 
   })
+  
+
   }
+  
+
